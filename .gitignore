@@ -10,7 +10,6 @@ env/
 ENV/
 
 # Poetry
-poetry.lock
 
 # Distribution / packaging
 build/
