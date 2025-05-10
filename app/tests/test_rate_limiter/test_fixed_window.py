@@ -3,10 +3,11 @@ import time
 
 
 def test_fixed_window_allows_within_limit():
-    limiter = FixedWindowRateLimiter(10,2)
+    limiter = FixedWindowRateLimiter(10, 2)
     identifier = "user-1"
     for i in range(10):
         assert limiter.allow_request(identifier) == True
+
 
 def test_fixed_window_blocks_over_limit():
     limiter = FixedWindowRateLimiter(10, 2)
@@ -15,8 +16,9 @@ def test_fixed_window_blocks_over_limit():
         limiter.allow_request(identifier)
     assert limiter.allow_request(identifier) == False
 
+
 def test_fixed_window_reset():
-    limiter = FixedWindowRateLimiter(10,2)
+    limiter = FixedWindowRateLimiter(10, 2)
     identifier = "user-1"
     for i in range(10):
         assert limiter.allow_request(identifier) == True
@@ -27,7 +29,7 @@ def test_fixed_window_reset():
 
 
 def test_fixed_window_manual_reset():
-    limiter = FixedWindowRateLimiter(10,2)
+    limiter = FixedWindowRateLimiter(10, 2)
     identifier = "user-1"
     for i in range(10):
         assert limiter.allow_request(identifier) == True
