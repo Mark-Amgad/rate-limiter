@@ -13,7 +13,6 @@ class TokenBucketRateLimiter(RateLimiter):
 
     def allow_request(self, identifier: str) -> bool:
         self.refill(identifier)
-
         if self.tokens[identifier] > 0:
             self.tokens[identifier] -= 1
             return True
@@ -27,3 +26,4 @@ class TokenBucketRateLimiter(RateLimiter):
         self.tokens[identifier] = min(
             self.capacity, int(self.tokens[identifier] + refill_amount)
         )
+        self.last_refill[identifier] = now

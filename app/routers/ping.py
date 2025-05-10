@@ -1,14 +1,16 @@
-from fastapi import FastAPI, Depends
+from fastapi import  Depends
+from fastapi import APIRouter
 
 from app.dependencies.rate_limiters import (
     fixed_window_rate_limiter_dependency,
     token_bucket_rate_limiter_dependency,
 )
 
-app = FastAPI()
+
+router = APIRouter()
 
 
-@app.get(
+@router.get(
     "/ping",
     dependencies=[
         Depends(fixed_window_rate_limiter_dependency(limit=3, window_size=2))
@@ -19,7 +21,7 @@ def ping():
     return {"message": "pong"}
 
 
-@app.get(
+@router.get(
     "/tic",
     dependencies=[
         Depends(
