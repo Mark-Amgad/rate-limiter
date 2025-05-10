@@ -17,3 +17,14 @@ docker-compose run api pytest
 ```
 docker-compose up --build
 ```
+
+## Check docs
+1. Swagger
+```
+http://localhost:8000/docs
+```
+
+1. Redocly
+```
+http://localhost:8000/redoc
+```
